@@ -25,6 +25,23 @@ var questions = [{
     correct: 'the DOM'
 }];
 
+// TIMER
+function startTimer() {
+    var countDown = 60;
+
+    var timerInterval = setInterval(function () {
+        if (countDown > 1) {
+            coundDown --;
+            timer.textContent = 'Time: ' + countDown + ' seconds';
+        }
+        else {
+            timer.textContent = 'Quiz Over!';
+            clearInterval(timerInterval)
+        }
+    })
+    firstQuestion();
+};
+
 // when start button is clicked, timer starts, user is presented with a question
 
 // when question is answered, user is prompted with another question
