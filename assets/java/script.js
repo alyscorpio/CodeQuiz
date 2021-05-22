@@ -1,6 +1,6 @@
 // Declare starting variables
 var startButton = document.querySelector('#start');
-var timer = document.querySelector('timer');
+var timer = document.querySelector('#timer');
 var quizStart = document.querySelector('quiz-start');
 var quizQuestions = document.querySelector('quiz-questions');
 
@@ -31,16 +31,19 @@ function startTimer() {
 
     var timerInterval = setInterval(function () {
         if (countDown > 1) {
-            coundDown --;
+            countDown--;
             timer.textContent = 'Time: ' + countDown + ' seconds';
         }
         else {
             timer.textContent = 'Quiz Over!';
             clearInterval(timerInterval)
         }
-    })
-    firstQuestion();
+    }, 1000)
 };
+
+startButton.addEventListener('click', function(){
+    startTimer();
+});
 
 // when start button is clicked, timer starts, user is presented with a question
 

@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+#timer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+}
