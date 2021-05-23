@@ -1,17 +1,17 @@
 // VARIABLES
-
+// Score variables
+var finalScore = 0;
+var scoreNow = 0;
 // HTML elements converted to variables
 var startButton = document.querySelector('#start');
 var timer = document.querySelector('#timer');
-
 // HTML sections converted to variables
 var quizStart = document.querySelector('quiz-start');
 var quizQuestions = document.querySelector('quiz-questions');
-
 // Created HTML elements for questions and answers
 var questDiv = document.createElement('div'); setAttribute('class', 'question');
 var ansDiv = document.createElement('div'); setAttribute('class', 'answers');
-
+// Created HTML elements for answer options
 var answer1 = document.createElement('div'); document.setAttribute('class', 'option-1');
 var answer2 = document.createElement('div'); document.setAttribute('class', 'option-2');
 var answer3 = document.createElement('div'); document.setAttribute('class', 'option-3');
@@ -40,6 +40,7 @@ var questions = [{
 }];
 
 // TIMER
+// Function for timer opperation
 function startTimer() {
     var countDown = 60;
 
@@ -54,7 +55,7 @@ function startTimer() {
         }
     }, 1000)
 };
-
+// Function to start timer when button is clicked
 startButton.addEventListener('click', function(){
     startTimer();
 });
