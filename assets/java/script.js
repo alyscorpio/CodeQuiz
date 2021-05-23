@@ -1,9 +1,23 @@
-// Declare starting variables
+// VARIABLES
+
+// HTML elements converted to variables
 var startButton = document.querySelector('#start');
 var timer = document.querySelector('#timer');
+
+// HTML sections converted to variables
 var quizStart = document.querySelector('quiz-start');
 var quizQuestions = document.querySelector('quiz-questions');
 
+// Created HTML elements for questions and answers
+var questDiv = document.createElement('div'); setAttribute('class', 'question');
+var ansDiv = document.createElement('div'); setAttribute('class', 'answers');
+
+var answer1 = document.createElement('div'); document.setAttribute('class', 'option-1');
+var answer2 = document.createElement('div'); document.setAttribute('class', 'option-2');
+var answer3 = document.createElement('div'); document.setAttribute('class', 'option-3');
+var answer4 = document.createElement('div'); document.setAttribute('class', 'option-4');
+
+// QUESTIONS
 var questions = [{
     question: 'What HTML element defines a paragraph?',
     answers: ['<paragraph>', '<p1>', '<p>', '<par>'],
@@ -44,6 +58,8 @@ function startTimer() {
 startButton.addEventListener('click', function(){
     startTimer();
 });
+
+
 
 // when start button is clicked, timer starts, user is presented with a question
 
