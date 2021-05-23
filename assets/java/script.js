@@ -8,46 +8,50 @@ var startButton = document.querySelector('#start');
 var timer = document.querySelector('#timer');
 
 // HTML sections converted to variables
-var quizStart = document.querySelector('quiz-start');
-var quizQuestions = document.querySelector('quiz-questions');
+var quizStart = document.querySelector('#quiz-start');
+var quizQuestions = document.querySelector('#quiz-questions');
 
-// Created HTML elements for questions and answers
+// New elements for questions and answers
 var questDiv = document.createElement('div'); 
 var ansDiv = document.createElement('div'); 
 
-questDiv.setAttribute('class', 'questions');
-ansDiv.setAttribute('class', 'answers');
-
-// Created HTML elements for answer options
+// New elements for answer options
 var answer1 = document.createElement('div'); 
 var answer2 = document.createElement('div'); 
 var answer3 = document.createElement('div'); 
+var answer4 = document.createElement('div');
 
+// Assign classes to new elements
+questDiv.setAttribute('class', 'questions');
+ansDiv.setAttribute('class', 'answers');
 answer1.setAttribute('class', 'option-1');
 answer2.setAttribute('class', 'option-2');
 answer3.setAttribute('class', 'option-3');
+answer4.setAttribute('class', 'option-4');
+
 
 // QUESTIONS
 var questions = [{
-    question: 'What HTML element defines a paragraph?',
+    questions: 'What HTML element defines a paragraph?',
     answers: ['<paragraph>', '<p1>', '<p>', '<par>'],
     correct: '<p>'
 },
 {
-    question: 'In CSS, what property specifies the font of a portion of text?',
+    questions: 'In CSS, what property specifies the font of a portion of text?',
     answers: ['font', 'font-family', 'font-style', 'font-display'],
     correct: 'font-family'
 },
 {
-    question: 'In JavaScript, what is the name for a special variable that holds more than one value? (Example: var names = ["John", "Paul", "Ringo"];)',
+    questions: 'In JavaScript, what is the name for a special variable that holds more than one value? (Example: var names = ["John", "Paul", "Ringo"];)',
     answers: ['String', 'Boolean', 'Loop', 'Array'],
     correct: 'Array'
 },
 {
-    question: 'How can JavaScript access and change elements within an HTML document?',
+    questions: 'How can JavaScript access and change elements within an HTML document?',
     answers: ['the DOM', 'jQuery', 'the Server', 'APIs'],
     correct: 'the DOM'
 }];
+
 
 // TIMER
 // Function for timer opperation
@@ -66,37 +70,50 @@ function startTimer() {
     }, 1000)
     startQuestions();
 };
+
 // Function to start timer when button is clicked
 startButton.addEventListener('click', function(){
     startTimer();
 });
 
+
 // QUIZ
 // Function to start questions
 function startQuestions () {
+    // Hide start elemets when quiz is running
+    quizStart.style.display = 'none';
+
     // Score reset
     finalScore = 0;
     scoreNow = 0;
-
-    // Hide start elemets when quiz is running
-    quizStart.style.display = 'none';
 
     // Append question divs, add question to page
     quizQuestions.appendChild(questDiv);
     quizQuestions.appendChild(ansDiv);
 
-    questDiv.textContent = question[0].questions;
+    questDiv.textContent = questions[0].questions;
 
     // Append answer divs, add answers to page
     ansDiv.appendChild(answer1);
     ansDiv.appendChild(answer2);
     ansDiv.appendChild(answer3);
+    ansDiv.appendChild(answer4);
     
-    answer1.textContent = question[0].answers[0];
-    answer2.textContent = question[0].answers[1];
-    answer3.textContent = question[0].answers[2];
+    answer1.textContent = questions[0].answers[0];
+    answer2.textContent = questions[0].answers[1];
+    answer3.textContent = questions[0].answers[2];
+    answer4.textContent = questions[1].answers[3];
 };
 
+// Function to move to next question
+function nextQuestion() {
+    answer1.textContent = questions[1].answers[0];
+    answer2.textContent = questions[1].answers[1];
+    answer3.textContent = questions[1].answers[2];
+    answer4.textContent = questions[1].answers[3];
+}
+
+ansDiv.addEventListener('click', nextQuestion);
 
 
 // when start button is clicked, timer starts, user is presented with a question
