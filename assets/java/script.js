@@ -2,20 +2,30 @@
 // Score variables
 var finalScore = 0;
 var scoreNow = 0;
+
 // HTML elements converted to variables
 var startButton = document.querySelector('#start');
 var timer = document.querySelector('#timer');
+
 // HTML sections converted to variables
 var quizStart = document.querySelector('quiz-start');
 var quizQuestions = document.querySelector('quiz-questions');
+
 // Created HTML elements for questions and answers
-var questDiv = document.createElement('div'); setAttribute('class', 'questions');
-var ansDiv = document.createElement('div'); setAttribute('class', 'answers');
+var questDiv = document.createElement('div'); 
+var ansDiv = document.createElement('div'); 
+
+questDiv.setAttribute('class', 'questions');
+ansDiv.setAttribute('class', 'answers');
+
 // Created HTML elements for answer options
-var answer1 = document.createElement('div'); document.setAttribute('class', 'option-1');
-var answer2 = document.createElement('div'); document.setAttribute('class', 'option-2');
-var answer3 = document.createElement('div'); document.setAttribute('class', 'option-3');
-var answer4 = document.createElement('div'); document.setAttribute('class', 'option-4');
+var answer1 = document.createElement('div'); 
+var answer2 = document.createElement('div'); 
+var answer3 = document.createElement('div'); 
+
+answer1.setAttribute('class', 'option-1');
+answer2.setAttribute('class', 'option-2');
+answer3.setAttribute('class', 'option-3');
 
 // QUESTIONS
 var questions = [{
@@ -61,18 +71,30 @@ startButton.addEventListener('click', function(){
     startTimer();
 });
 
+// QUIZ
+// Function to start questions
 function startQuestions () {
+    // Score reset
     finalScore = 0;
     scoreNow = 0;
 
+    // Hide start elemets when quiz is running
     quizStart.style.display = 'none';
+
+    // Append question divs, add question to page
+    quizQuestions.appendChild(questDiv);
+    quizQuestions.appendChild(ansDiv);
 
     questDiv.textContent = question[0].questions;
 
+    // Append answer divs, add answers to page
+    ansDiv.appendChild(answer1);
+    ansDiv.appendChild(answer2);
+    ansDiv.appendChild(answer3);
+    
     answer1.textContent = question[0].answers[0];
     answer2.textContent = question[0].answers[1];
     answer3.textContent = question[0].answers[2];
-    
 };
 
 
