@@ -9,7 +9,7 @@ var timer = document.querySelector('#timer');
 var quizStart = document.querySelector('quiz-start');
 var quizQuestions = document.querySelector('quiz-questions');
 // Created HTML elements for questions and answers
-var questDiv = document.createElement('div'); setAttribute('class', 'question');
+var questDiv = document.createElement('div'); setAttribute('class', 'questions');
 var ansDiv = document.createElement('div'); setAttribute('class', 'answers');
 // Created HTML elements for answer options
 var answer1 = document.createElement('div'); document.setAttribute('class', 'option-1');
@@ -54,11 +54,26 @@ function startTimer() {
             clearInterval(timerInterval)
         }
     }, 1000)
+    startQuestions();
 };
 // Function to start timer when button is clicked
 startButton.addEventListener('click', function(){
     startTimer();
 });
+
+function startQuestions () {
+    finalScore = 0;
+    scoreNow = 0;
+
+    quizStart.style.display = 'none';
+
+    questDiv.textContent = question[0].questions;
+
+    answer1.textContent = question[0].answers[0];
+    answer2.textContent = question[0].answers[1];
+    answer3.textContent = question[0].answers[2];
+    
+};
 
 
 
