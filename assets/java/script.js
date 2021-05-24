@@ -2,18 +2,17 @@
 var startButton = document.querySelector('#start');
 var timer = document.querySelector('#timer');
 
-// // HTML sections converted to variables
 var quizHead = document.querySelector('#quiz-head');
-var quizContent = document.querySelector('#quiz-content');
 
 var quizLocation = 0;
 var correct = 0;
 var quizContent, quizStatus, question, answers, correct, answer1, answer2, answer3, answer4;
 
-startButton.addEventListener('click', function(){
+startButton.addEventListener('click', function() {
     startTimer();
 });
 
+// TIMER
 function startTimer() {
     var countDown = 60;
 
@@ -27,14 +26,15 @@ function startTimer() {
             clearInterval(timerInterval)
         }
     }, 1000)
-    quizRun();
+    askQuestion();
 };
 
+//QUIZ
 function get(x) {
     return document.getElementById(x);
 };
 
-// QUESTIONS
+// questions
 var questions = [
     {
     question: 'What HTML element defines a paragraph?',
@@ -62,7 +62,7 @@ function get(x) {
     return document.getElementById(x);
 }
 
-function quizRun() {
+function askQuestion() {
 
     quizHead.style.display = 'none';
 
@@ -85,14 +85,30 @@ function quizRun() {
     
     quizContent.innerHTML = '<h3'+question+'</h3';
 
-    quizContent.innerHTML += "<label> <input type='radio' name='options' value='1'> "+answer1+" </label><br>";
-    quizContent.innerHTML += "<label> <input type='radio' name='options' value='2'> "+answer2+" </label><br>";
-    quizContent.innerHTML += "<label> <input type='radio' name='options' value='3'> "+answer3+" </label><br>";
-    quizContent.innerHTML += "<label> <input type='radio' name='options' value='4'> "+answer4+" </label><br><br>";
-    quizContent.innerHTML += "<button onclick='checkAnswer() '>Submit</button>";
+    quizContent.innerHTML += "<button id='answer-button'> "+answer1+" </button>";
+    quizContent.innerHTML += "<button id='answer-button'> "+answer2+" </button>";
+    quizContent.innerHTML += "<button id='answer-button'> "+answer3+" </button>";
+    quizContent.innerHTML += "<button id='answer-button'> "+answer4+" </button>";
+    
+    var answerButton = document.getElementById('#answerButton');
+
+    answerButton.addEventListener('click', checkAnswer());
 }
 
+function checkAnswer() {
+    options = document.getElementByName('options');
+    for (var i=0; i<options.length; i++) {
+        if (options[i].checked) {
+            option = options[i].value;
+        }
+    }
+    if (option == questions[quizLocation].correct) {
+        correct++;
+    }
+    quizLocation++;
 
+    askQuestion ();
+}
 // VARIABLES
 // Score variables
 // var finalScore = 0;
