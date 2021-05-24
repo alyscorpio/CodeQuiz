@@ -77,38 +77,38 @@ function askQuestion() {
 
     get('quiz-status').innerHTML = "Question "+(quizLocation+1)+" of "+questions.length;
 
-    question = questions[quizLocation].question;
-    answer1 = questions[quizLocation].answers[0];
-    answer2 = questions[quizLocation].answers[1];
-    answer3 = questions[quizLocation].answers[2];
-    answer4 = questions[quizLocation].answers[3];
+    var question = questions[quizLocation].question;
+    var answer1 = questions[quizLocation].answers[0].question[1];
+    var answer2 = questions[quizLocation].answers[1].question[1];
+    var answer3 = questions[quizLocation].answers[2].question[1];
+    var answer4 = questions[quizLocation].answers[3].question[1];
     
-    quizContent.innerHTML = '<h3'+question+'</h3';
+    quizContent.innerHTML = '<h3>'+question+'</h3';
 
-    quizContent.innerHTML += "<button id='answer-button'> "+answer1+" </button>";
-    quizContent.innerHTML += "<button id='answer-button'> "+answer2+" </button>";
-    quizContent.innerHTML += "<button id='answer-button'> "+answer3+" </button>";
-    quizContent.innerHTML += "<button id='answer-button'> "+answer4+" </button>";
+    quizContent.innerHTML += "<button id='answer-button'>"+answer1+"</button>";
+    quizContent.innerHTML += "<button id='answer-button'>"+answer2+"</button>";
+    quizContent.innerHTML += "<button id='answer-button'>"+answer3+"</button>";
+    quizContent.innerHTML += "<button id='answer-button'>"+answer4+"</button>";
     
     var answerButton = document.getElementById('#answerButton');
 
-    answerButton.addEventListener('click', checkAnswer());
+    // answerButton.addEventListener('click', checkAnswer());
 }
 
-function checkAnswer() {
-    options = document.getElementByName('options');
-    for (var i=0; i<options.length; i++) {
-        if (options[i].checked) {
-            option = options[i].value;
-        }
-    }
-    if (option == questions[quizLocation].correct) {
-        correct++;
-    }
-    quizLocation++;
+// function checkAnswer() {
+//     options = document.getElementByName('options');
+//     for (var i = 0; i < options.length; i++) {
+//         if (options[i].checked) {
+//             option = options[i].value;
+//         }
+//     }
+//     if (option == questions[quizLocation].correct) {
+//         correct++;
+//     }
+//     quizLocation++;
 
-    askQuestion ();
-}
+//     askQuestion ();
+// }
 // VARIABLES
 // Score variables
 // var finalScore = 0;

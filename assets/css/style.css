@@ -12,3 +12,10 @@ body {
     right: 0;
     display: block;
 }
+
+#answer-button {
+    margin-left:0;
+    margin-top: 15px;
+    background-color: white;
+    display: block;
+}
