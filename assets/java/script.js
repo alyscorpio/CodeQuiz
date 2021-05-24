@@ -2,12 +2,12 @@
 var startButton = document.querySelector('#start');
 var timer = document.querySelector('#timer');
 var quizHead = document.querySelector('#quiz-head');
-var quizContent = document.querySelector('#quiz-content')
+var quizContent = document.querySelector('#quiz-content');
 var thisQuestion = document.querySelector('#question');
-var button1 = document.querySelector('#btn1')
-var button2 = document.querySelector('#btn2')
-var button3 = document.querySelector('#btn3')
-var button4 = document.querySelector('#btn4')
+var button1 = document.querySelector('#btn1');
+var button2 = document.querySelector('#btn2');
+var button3 = document.querySelector('#btn3');
+var button4 = document.querySelector('#btn4');
 
 var quizLocation = 0;
 var correct = 0;
@@ -36,43 +36,31 @@ function startTimer() {
     askQuestion();
 };
 
-//QUIZ
-// function get(x) {
-//     return document.getElementById(x);
-// };
-
-// questions
+// QUIZ
 var questions = [{
     question: "What HTML element defines a paragraph?",
-    answers: ["<paragraph>", "<p1>", "<p>", "<par>"],
-    correct: "<p>"
+    options: ["<paragraph>", "<p1>", "<p>", "<par>"],
+    answer: "<p>"
     },
     {
     question: "In CSS, what property specifies the font of a portion of text?",
-    answers: ["font", "font-family", "font-style", "font-display"],
-    correct: "font-family"
+    options: ["font", "font-family", "font-style", "font-display"],
+    answer: "font-family"
     },
     {
     question: "In JavaScript, what is the name for a special variable that holds more than one value? (Example: var names = ['John', 'Paul', 'Ringo'];)",
     answers: ["String", "Boolean", "Loop", "Array"],
-    correct: "Array"
+    answer: "Array"
     },
     {
     question: "How can JavaScript access and change elements within an HTML document?",
-    answers: ["the DOM", "jQuery", "the Server", "APIs"],
-    correct: "the DOM"
+    options: ["the DOM", "jQuery", "the Server", "APIs"],
+    answer: "the DOM"
 }];
 
 function askQuestion() {
 
     quizHead.style.display = 'none';
-
-    // var quizContent = document.getElementById('#quiz-content');
-    // var question = document.getElementById('#question')
-    // var button1 = document.getElementById('#btn1');
-    // var ansButton2 = document.getElementById('#btn2');
-    // var ansButton3 = document.getElementById('#btn3');
-    // var ansButton4 = document.getElementById('#btn4');
 
     if (quizLocation >= questions.length) {
         quizContent.innerHTML = '<h2>QUIZ OVER</h2>';
@@ -83,10 +71,10 @@ function askQuestion() {
     };
 
     thisQuestion.textContent = questions[quizLocation].question;
-    button1.textContent = questions[quizLocation].answers[0];
-    button2.textContent = questions[quizLocation].answers[1];
-    button3.textContent = questions[quizLocation].answers[2];
-    button4.textContent = questions[quizLocation].answers[3];
+    button1.textContent = questions[quizLocation].options[0];
+    button2.textContent = questions[quizLocation].options[1];
+    button3.textContent = questions[quizLocation].options[2];
+    button4.textContent = questions[quizLocation].options[3];
 
 
     button1.addEventListener('click', function() {
@@ -101,67 +89,26 @@ function askQuestion() {
     button4.addEventListener('click', function() {
         checkAnswer();
     });
+}  
 
-    // var question = questions[quizLocation].question;
-    // var option1 = questions[quizLocation].answers[0];
-    // var option2 = questions[quizLocation].answers[1];
-    // var option3 = questions[quizLocation].answers[2];
-    // var option4 = questions[quizLocation].answers[3];
+function checkAnswer () {
+    options = document.getElementsByName('options');
+    for (var i = 0; i < options.length; i++) {
+        if (options[i].clicked) {
+        option = options[i].value;
+        }
+    }
+    if (option == questions[quizLocation].answer) {
+        correct++
+    }
 
-    // quizContent.innerHTML = "<h3>" +question+ "<h3>";
+    quizLocation++;
 
-
-
-
-    // document.getElementById('#question').innerHTML = questions[quizLocation].question;
-    // document.getElementById('#btn1').innerHTML = questions[quizLocation]. answers[0];
-    // document.getElementById('#btn2').innerHTML = questions[quizLocation]. answers[1];
-    // document.getElementById('#btn3').innerHTML = questions[quizLocation]. answers[2];
-    // document.getElementById('#btn4').innerHTML = questions[quizLocation]. answers[4];
-
-    // quizContent.appendChild(questDiv);
-    // quizContent.appendChild(ansDiv);
-    // ansDiv.appendChild(ansButton1);
-    // ansDiv.appendChild(ansButton2);
-    // ansDiv.appendChild(ansButton3);
-    // ansDiv.appendChild(ansButton4);
-
-    // questDiv.textContent = questions[quizLocation].questions;
-
-    // ansButton1.textContent = questions[quizLocation].answers[0];
-    // ansButton2.textContent = questions[quizLocation].answers[1];
-    // ansButton3.textContent = questions[quizLocation].answers[2];
-    // ansButton1.textContent = questions[quizLocation].answers[3];
-
-    // get('quiz-status').innerHTML = "Question "+(quizLocation+1)+" of "+questions.length;
-    
-    
-    // var question = questions[quizLocation].question;
-    // var option1 = questions[quizLocation].a;
-    // var option2 = questions[quizLocation].b;
-    // var option3 = questions[quizLocation].c;
-    // var option4 = questions[quizLocation].d;
-
-    // console.log(answer1);
-    // console.log(answer2);
-    // console.log(answer3);
-    // console.log(answer4);
-    
-    // quizContent.innerHTML = '<h3>'+question+'</h3';
-
-    // quizContent.innerHTML += "<button id='answer-button'>"+option1+"</button>";
-    // quizContent.innerHTML += "<button id='answer-button'>"+option2+"</button>";
-    // quizContent.innerHTML += "<button id='answer-button'>"+option3+"</button>";
-    // quizContent.innerHTML += "<button id='answer-button'>"+option4+"</button>";
-    
-
-    
-    // var answerButton = document.getElementById('#answerButton');
-
-    // answerButton.addEventListener('click', function() {
-    //     checkAnswer();
-    // });
-}   
+    askQuestion();
+}
+// function checkAnswer(event) {
+//     var 
+// }
 
 // function checkAnswer() {
 //     options = document.getElementByName('options');
@@ -169,7 +116,7 @@ function askQuestion() {
 //         if (options[i].clicked) {
 //         option = options[i].value;
 //     }
-//     }
+// }
 //     if (option == questions[quizLocation].correct) {
 //         correct++;
 //     }
